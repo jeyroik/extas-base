@@ -14,17 +14,15 @@ use extas\components\THasOwner;
 use extas\components\parameters\THasParameters;
 use extas\components\Item;
 
-class Car extends Item implements IHasName, IHasDescription, IHasOwner
+class Car extends Item implements IHasName, IHasDescription
 {
     use THasName;
     use THasDescription;
-    use THasOwner;
 }
 
 $car = new Car([
     IHasName::FIELD__NAME => 'My car',
-    IHasDescription::FIELD__DESCRIPTION => 'This is my car',
-    IHasOwner::FIELD__OWNER => 'jeyroik'
+    IHasDescription::FIELD__DESCRIPTION => 'This is my car'
 ]);
 
 echo $car->getName(); // 'My car'
@@ -32,8 +30,6 @@ $car->setName('Not my car');
 
 echo $car->getDescription(); // 'This is my car'
 $car->setDescription('This is not my car');
-
-echo $car->getOwner()->getName(); // jeyroik
 
 class Car2 extends Item implements IHasParameters
 {
