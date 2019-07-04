@@ -1,0 +1,20 @@
+<?php
+namespace extas\interfaces\parameters;
+
+use extas\interfaces\IHasName;
+use extas\interfaces\IHasValue;
+use extas\interfaces\IItem;
+
+/**
+ * Interface IParameter
+ *
+ * Абстрактная сущность, которая в обязательном порядке обладает следующими свойствами:
+ * - имя
+ * - значение
+ *
+ * @package extas\interfaces\services
+ * @author jeyroik@gmail.com
+ */
+interface IParameter extends IItem, IHasName, IHasValue
+{
+}

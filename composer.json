@@ -1,0 +1,12 @@
+{
+  "name": "jeyroik/extas-base",
+  "description": "Base Extas package",
+  "require": {
+    "jeyroik/extas-players": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "extas\\": "src/"
+    }
+  }
+}
