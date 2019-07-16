@@ -10,7 +10,6 @@ use extas\interafces\parameters\IHasParameters;
 
 use extas\components\THasName;
 use extas\components\THasDescription;
-use extas\components\THasOwner;
 use extas\components\parameters\THasParameters;
 use extas\components\Item;
 

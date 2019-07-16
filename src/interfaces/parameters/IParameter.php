@@ -4,6 +4,7 @@ namespace extas\interfaces\parameters;
 use extas\interfaces\IHasName;
 use extas\interfaces\IHasValue;
 use extas\interfaces\IItem;
+use extas\interfaces\templates\IHasTemplate;
 
 /**
  * Interface IParameter
@@ -15,6 +16,6 @@ use extas\interfaces\IItem;
  * @package extas\interfaces\services
  * @author jeyroik@gmail.com
  */
-interface IParameter extends IItem, IHasName, IHasValue
+interface IParameter extends IItem, IHasName, IHasValue, IHasTemplate
 {
 }
