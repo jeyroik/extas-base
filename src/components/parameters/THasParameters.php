@@ -8,6 +8,7 @@ use extas\interfaces\parameters\IParameter;
  * Trait THasParameters
  *
  * @property $config
+ * @method getSubjectForExtension()
  *
  * @package extas\components\parameters
  * @author jeyroik@gmail.com
@@ -25,8 +26,12 @@ trait THasParameters
 
         if (!$asArray) {
             $items = [];
-            foreach ($parameters as $parameter) {
-                $items[] = new Parameter($parameter);
+            foreach ($parameters as $parameterData) {
+                $parameter = new Parameter($parameterData);
+                foreach ($this->getPluginsByStage($this->getSubjectForExtension() . '.parameter') as $plugin) {
+                    $plugin($parameter);
+                }
+                $items[] = $parameter;
             }
 
             return $items;
