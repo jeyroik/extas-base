@@ -26,7 +26,7 @@ trait THasId
      *
      * @return $this
      */
-    public function setId($name)
+    public function setId(string $name)
     {
         $this->config[IHasId::FIELD__ID] = $name;
 
