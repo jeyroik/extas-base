@@ -9,7 +9,7 @@ namespace extas\interfaces;
  */
 interface IHasPath
 {
-    const FIELD__PATH = 'path';
+    public const FIELD__PATH = 'path';
 
     /**
      * @return string

@@ -9,7 +9,7 @@ namespace extas\interfaces;
  */
 interface IHasCreatedAt
 {
-    const FIELD__CREATED_AT = 'created_at';
+    public const FIELD__CREATED_AT = 'created_at';
 
     /**
      * @param string $format

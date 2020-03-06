@@ -9,7 +9,7 @@ namespace extas\interfaces;
  */
 interface IHasUpdatedAt
 {
-    const FIELD__UPDATED_AT = 'updated_at';
+    public const FIELD__UPDATED_AT = 'updated_at';
 
     /**
      * @param string $format

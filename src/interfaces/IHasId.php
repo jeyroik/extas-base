@@ -9,7 +9,7 @@ namespace extas\interfaces;
  */
 interface IHasId
 {
-    const FIELD__ID = 'id';
+    public const FIELD__ID = 'id';
 
     /**
      * @return mixed

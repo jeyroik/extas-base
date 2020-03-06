@@ -9,7 +9,7 @@ namespace extas\interfaces;
  */
 interface IHasVersion
 {
-    const FILED__VERSION = 'version';
+    public const FILED__VERSION = 'version';
 
     /**
      * @return string

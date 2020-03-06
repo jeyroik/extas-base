@@ -16,7 +16,7 @@ trait THasId
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->config[IHasId::FIELD__ID] ?? '';
     }

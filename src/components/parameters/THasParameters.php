@@ -20,7 +20,7 @@ trait THasParameters
      *
      * @return IParameter[]|array
      */
-    public function getParameters($asArray = false)
+    public function getParameters($asArray = false): array
     {
         $parameters = $this->config[IHasParameters::FIELD__PARAMETERS] ?? [];
 

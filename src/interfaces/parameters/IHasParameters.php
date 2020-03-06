@@ -9,14 +9,14 @@ namespace extas\interfaces\parameters;
  */
 interface IHasParameters
 {
-    const FIELD__PARAMETERS = 'parameters';
+    public const FIELD__PARAMETERS = 'parameters';
 
     /**
      * @param bool $asArray return IParameter[] if false, return array of arrays otherwise
      *
      * @return IParameter[]|array
      */
-    public function getParameters($asArray = false);
+    public function getParameters($asArray = false): array;
 
     /**
      * @param IParameter[]|array $parameters

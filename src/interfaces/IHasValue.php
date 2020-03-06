@@ -9,7 +9,7 @@ namespace extas\interfaces;
  */
 interface IHasValue
 {
-    const FIELD__VALUE = 'value';
+    public const FIELD__VALUE = 'value';
 
     /**
      * @param mixed $default

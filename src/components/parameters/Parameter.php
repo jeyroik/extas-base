@@ -8,6 +8,7 @@ use extas\components\THasValue;
 use extas\interfaces\parameters\IParameter;
 use extas\components\Item;
 use extas\interfaces\parameters\templates\IParameterTemplateRepository;
+use extas\interfaces\repositories\IRepository;
 
 /**
  * Class Parameter
@@ -22,7 +23,7 @@ class Parameter extends Item implements IParameter
     use THasTemplate;
 
     /**
-     * @return \extas\interfaces\repositories\IRepository|string
+     * @return IRepository|string
      */
     public function getTemplateRepository()
     {

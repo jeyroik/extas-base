@@ -9,5 +9,5 @@ namespace extas\interfaces;
  */
 interface IExtas extends IItem
 {
-    const SUBJECT = 'extas';
+    public const SUBJECT = 'extas';
 }

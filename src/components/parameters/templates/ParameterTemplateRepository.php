@@ -13,9 +13,9 @@ use extas\interfaces\parameters\templates\IParameterTemplateRepository;
  */
 class ParameterTemplateRepository extends Repository implements IParameterTemplateRepository
 {
-    protected $itemClass = Template::class;
-    protected $name = 'parameters_templates';
-    protected $pk = Template::FIELD__NAME;
-    protected $scope = 'extas';
-    protected $idAs = '';
+    protected string $itemClass = Template::class;
+    protected string $name = 'parameters_templates';
+    protected string $pk = Template::FIELD__NAME;
+    protected string $scope = 'extas';
+    protected string $idAs = '';
 }

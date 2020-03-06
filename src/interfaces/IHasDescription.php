@@ -9,8 +9,8 @@ namespace extas\interfaces;
  */
 interface IHasDescription
 {
-    const FIELD__TITLE = 'title';
-    const FIELD__DESCRIPTION = 'description';
+    public const FIELD__TITLE = 'title';
+    public const FIELD__DESCRIPTION = 'description';
 
     /**
      * @return string

@@ -18,5 +18,5 @@ use extas\interfaces\templates\IHasTemplate;
  */
 interface IParameter extends IItem, IHasName, IHasValue, IHasTemplate
 {
-    const SUBJECT = 'extas.parameter';
+    public const SUBJECT = 'extas.parameter';
 }

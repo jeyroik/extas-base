@@ -9,7 +9,7 @@ namespace extas\interfaces;
  */
 interface IHasName
 {
-    const FIELD__NAME = 'name';
+    public const FIELD__NAME = 'name';
 
     /**
      * @return string
