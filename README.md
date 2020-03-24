@@ -2,6 +2,12 @@
 
 Пакет с базовыми интерфейсами и трейтами с их реализацией.
 
+# Tests
+
+`# composer run-script test`
+
+# Usage
+
 ```php
 use extas\interafces\IHasName;
 use extas\interafces\IHasDescription;
