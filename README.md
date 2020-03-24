@@ -1,4 +1,6 @@
-# extas-base
+![PHP Composer](https://github.com/jeyroik/extas-base/workflows/PHP%20Composer/badge.svg?branch=master&event=push)
+
+# Описание
 
 Пакет с базовыми интерфейсами и трейтами с их реализацией.
 
