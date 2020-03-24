@@ -13,6 +13,7 @@ use extas\interfaces\repositories\IRepository;
 /**
  * Class Parameter
  *
+ * @deprecated Please, use jeyroik/extas-sample instead.
  * @package extas\components\parameters
  * @author jeyroik@gmail.com
  */

@@ -2,7 +2,7 @@
   "name": "jeyroik/extas-base",
   "description": "Base Extas package",
   "require": {
-    "jeyroik/extas-foundation": "3.*"
+    "jeyroik/extas-foundation": "4.*"
   },
   "autoload": {
     "psr-4": {

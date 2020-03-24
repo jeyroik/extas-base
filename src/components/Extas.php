@@ -6,6 +6,8 @@ use extas\interfaces\IExtas;
 /**
  * Class Extas
  *
+ * You can use this class as entrypoint for extas-compatale application part.
+ *
  * @package extas\components
  * @author jeyroik@gmail.com
  */

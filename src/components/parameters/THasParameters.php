@@ -10,6 +10,7 @@ use extas\interfaces\parameters\IParameter;
  * @property $config
  * @method getSubjectForExtension()
  *
+ * @deprecated Please, use jeyroik/extas-samples instead.
  * @package extas\components\parameters
  * @author jeyroik@gmail.com
  */
