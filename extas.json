@@ -1,9 +1,0 @@
-{
-  "name": "extas/base",
-  "package_classes": [
-    {
-      "interface": "extas\\interfaces\\parameters\\templates\\IParameterTemplateRepository",
-      "class": "extas\\components\\parameters\\templates\\ParameterTemplateRepository"
-    }
-  ]
-}

@@ -1,9 +1,6 @@
 {
   "name": "jeyroik/extas-base",
   "description": "Base Extas package",
-  "require": {
-    "jeyroik/extas-foundation": "4.*"
-  },
   "require-dev": {
     "phpunit/phpunit": "^9"
   },
