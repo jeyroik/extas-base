@@ -100,6 +100,11 @@ class TraitsTest extends TestCase
         $test = new class {
             use THasValue;
             protected array $config = [];
+
+            public function getTemplateName(): string
+            {
+                return 'test';
+            }
         };
 
         $test->setValue('Test');
