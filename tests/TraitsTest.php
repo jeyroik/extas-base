@@ -26,6 +26,7 @@ use extas\interfaces\IHasState;
 use extas\components\THasState;
 use extas\components\THasItemsData;
 use extas\interfaces\IHasItemsData;
+use extas\components\TIsApplicableArray;
 
 /**
  * Class TraitsTest
@@ -253,5 +254,33 @@ class TraitsTest extends TestCase
 
         $this->assertArrayHasKey('key', $dates);
         $this->assertEquals(date('Y-m-d', $now), $dates['key']->format('Y-m-d'));
+    }
+
+    public function testIsApplicableArray()
+    {
+        $test = new class {
+            use TIsApplicableArray;
+            public function isApplicable(string $value)
+            {
+                return !empty($value);
+            }
+
+            function apply($v)
+            {
+                return $v . '.ok';
+            }
+
+            public function __invoke($value)
+            {
+                return $this->applyToArray($value);
+            }
+        };
+
+        $notArray = $test('that.is');
+        $this->assertEquals('that.is.ok', $notArray);
+
+        $array = $test(['test1' => 'that.is', 'test2' => 'another.is']);
+        $this->assertEquals('that.is.ok', $array['test1']);
+        $this->assertEquals('another.is.ok', $array['test2']);
     }
 }
