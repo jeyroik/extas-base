@@ -22,6 +22,10 @@ use extas\components\THasName;
 use extas\interfaces\IHasName;
 use extas\components\THasDescription;
 use extas\interfaces\IHasDescription;
+use extas\interfaces\IHasState;
+use extas\components\THasState;
+use extas\components\THasItemsData;
+use extas\interfaces\IHasItemsData;
 
 /**
  * Class TraitsTest
@@ -212,5 +216,42 @@ class TraitsTest extends TestCase
 
         $test->removeAlias('Test2');
         $this->assertEquals(false, $test->hasAlias('Test2'));
+    }
+
+    public function testHasState()
+    {
+        /**
+         * @var $test IHasState
+         */
+        $test = new class {
+            use THasState;
+            protected array $config = [];
+        };
+
+        $test->setState('Test');
+
+        $this->assertEquals('Test', $test->getState());
+    }
+
+    public function testHasItemsData()
+    {
+        /**
+         * @var $test IHasItemsData
+         * @var $dates DateTime[]
+         */
+        $test = new class {
+            use THasItemsData;
+        };
+
+        $now = time();
+        $dates = $test->convertToItems(
+            [
+                'key' => date('Y/m/d H:i:s', $now)
+            ],
+            DateTime::class
+        );
+
+        $this->assertArrayHasKey('key', $dates);
+        $this->assertEquals(date('Y-m-d', $now), $dates['key']->format('Y-m-d'));
     }
 }
