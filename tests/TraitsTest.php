@@ -1,5 +1,11 @@
 <?php
+namespace tests;
 
+use extas\components\Item;
+use extas\components\THasContext;
+use extas\components\THasPriority;
+use extas\interfaces\IHasContext;
+use extas\interfaces\IHasPriority;
 use \PHPUnit\Framework\TestCase;
 use extas\components\THasInfo;
 use extas\components\THasAliases;
@@ -62,6 +68,44 @@ class TraitsTest extends TestCase
 
         $test->setName('Test');
         $this->assertEquals('Test', $test->getName());
+    }
+
+    public function testHasPriority()
+    {
+        /**
+         * @var $test IHasPriority
+         */
+        $test = new class {
+            use THasPriority;
+            protected array $config = [];
+        };
+
+        $test->setPriority(10);
+        $this->assertEquals(10, $test->getPriority());
+    }
+
+    public function testHasContext()
+    {
+        /**
+         * @var $test IHasContext
+         */
+        $test = new class {
+            use THasContext;
+            protected array $config = [];
+        };
+
+        $context = new class ([
+            'test' => 'is_ok'
+        ]) extends Item {
+            protected function getSubjectForExtension(): string
+            {
+                return '';
+            }
+        };
+
+        $test->setContext($context);
+        $this->assertNotEmpty($test->getContext());
+        $this->assertEquals('is_ok', $test->getContext()['test']);
     }
 
     public function testHasInfo()
