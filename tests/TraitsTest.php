@@ -223,7 +223,7 @@ class TraitsTest extends TestCase
         $this->assertEquals($now, $test->getUpdatedAt());
         $this->assertEquals(date($format, $now), $test->getUpdatedAt($format));
 
-        $test->setUpdatedAt(new DateTime(date('Y/m/d H:i:s', $now)));
+        $test->setUpdatedAt(new \DateTime(date('Y/m/d H:i:s', $now)));
         $this->assertEquals(date($format, $now), $test->getUpdatedAt($format));
 
         $test->setUpdatedAt(date('Y/m/d H:i:s', $now));
@@ -248,7 +248,7 @@ class TraitsTest extends TestCase
         $this->assertEquals($now, $test->getCreatedAt());
         $this->assertEquals(date($format, $now), $test->getCreatedAt($format));
 
-        $test->setCreatedAt(new DateTime(date('Y/m/d H:i:s', $now)));
+        $test->setCreatedAt(new \DateTime(date('Y/m/d H:i:s', $now)));
         $this->assertEquals(date($format, $now), $test->getCreatedAt($format));
 
         $test->setCreatedAt(date('Y/m/d H:i:s', $now));
@@ -294,7 +294,7 @@ class TraitsTest extends TestCase
     {
         /**
          * @var $test IHasItemsData
-         * @var $dates DateTime[]
+         * @var $dates \DateTime[]
          */
         $test = new class {
             use THasItemsData;
@@ -305,7 +305,7 @@ class TraitsTest extends TestCase
             [
                 'key' => date('Y/m/d H:i:s', $now)
             ],
-            DateTime::class
+            \DateTime::class
         );
 
         $this->assertArrayHasKey('key', $dates);
@@ -316,7 +316,7 @@ class TraitsTest extends TestCase
     {
         $test = new class {
             use TIsApplicableArray;
-            public function isApplicable(string $value)
+            public function isApplicable(string $value): bool
             {
                 return !empty($value);
             }
