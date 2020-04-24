@@ -84,30 +84,6 @@ class TraitsTest extends TestCase
         $this->assertEquals(10, $test->getPriority());
     }
 
-    public function testHasContext()
-    {
-        /**
-         * @var $test IHasContext
-         */
-        $test = new class {
-            use THasContext;
-            protected array $config = [];
-        };
-
-        $context = new class ([
-            'test' => 'is_ok'
-        ]) extends Item {
-            protected function getSubjectForExtension(): string
-            {
-                return '';
-            }
-        };
-
-        $test->setContext($context);
-        $this->assertNotEmpty($test->getContext());
-        $this->assertEquals('is_ok', $test->getContext()['test']);
-    }
-
     public function testHasInfo()
     {
         /**
