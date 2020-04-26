@@ -13,6 +13,8 @@ use extas\interfaces\IHasCreatedAt;
  */
 trait THasCreatedAt
 {
+    use THasTime;
+
     /**
      * @param string $format
      *
@@ -20,28 +22,16 @@ trait THasCreatedAt
      */
     public function getCreatedAt(string $format = '')
     {
-        $time = $this->config[IHasCreatedAt::FIELD__CREATED_AT] ?? 0;
-
-        return $format ? date($format, $time) : $time;
+        return $this->getTime(IHasCreatedAt::FIELD__CREATED_AT, $format);
     }
 
     /**
-     * @param string|int|\DateTime $time
+     * @param int|\DateTime $time
      *
      * @return $this
      */
     public function setCreatedAt($time)
     {
-        if ($time instanceof \DateTime) {
-            $time = $time->getTimestamp();
-        } elseif (is_numeric($time)) {
-            $time = (int) $time;
-        } else {
-            $time = strtotime($time);
-        }
-
-        $this->config[IHasCreatedAt::FIELD__CREATED_AT] = $time;
-
-        return $this;
+        return $this->setTime(IHasCreatedAt::FIELD__CREATED_AT, $time);
     }
 }

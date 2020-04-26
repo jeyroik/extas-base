@@ -19,7 +19,7 @@ interface IHasCreatedAt
     public function getCreatedAt(string $format = '');
 
     /**
-     * @param string|int|\DateTime $time
+     * @param int|\DateTime $time
      * @return $this
      */
     public function setCreatedAt($time);

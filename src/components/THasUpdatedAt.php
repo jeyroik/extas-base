@@ -13,6 +13,8 @@ use extas\interfaces\IHasUpdatedAt;
  */
 trait THasUpdatedAt
 {
+    use THasTime;
+
     /**
      * @param string $format
      *
@@ -20,9 +22,7 @@ trait THasUpdatedAt
      */
     public function getUpdatedAt(string $format = '')
     {
-        $time = $this->config[IHasUpdatedAt::FIELD__UPDATED_AT] ?? 0;
-
-        return $format ? date($format, $time) : $time;
+        return $this->getTime(IHasUpdatedAt::FIELD__UPDATED_AT, $format);
     }
 
     /**
@@ -32,16 +32,6 @@ trait THasUpdatedAt
      */
     public function setUpdatedAt($time)
     {
-        if ($time instanceof \DateTime) {
-            $time = $time->getTimestamp();
-        } elseif (is_numeric($time)) {
-            $time = (int) $time;
-        } else {
-            $time = strtotime($time);
-        }
-
-        $this->config[IHasUpdatedAt::FIELD__UPDATED_AT] = $time;
-
-        return $this;
+        return $this->setTime(IHasUpdatedAt::FIELD__UPDATED_AT, $time);
     }
 }
