@@ -201,9 +201,6 @@ class TraitsTest extends TestCase
 
         $test->setUpdatedAt(new \DateTime(date('Y/m/d H:i:s', $now)));
         $this->assertEquals(date($format, $now), $test->getUpdatedAt($format));
-
-        $test->setUpdatedAt(date('Y/m/d H:i:s', $now));
-        $this->assertEquals(date($format, $now), $test->getUpdatedAt($format));
     }
 
     public function testHasCreatedAt()
@@ -225,9 +222,6 @@ class TraitsTest extends TestCase
         $this->assertEquals(date($format, $now), $test->getCreatedAt($format));
 
         $test->setCreatedAt(new \DateTime(date('Y/m/d H:i:s', $now)));
-        $this->assertEquals(date($format, $now), $test->getCreatedAt($format));
-
-        $test->setCreatedAt(date('Y/m/d H:i:s', $now));
         $this->assertEquals(date($format, $now), $test->getCreatedAt($format));
     }
 
