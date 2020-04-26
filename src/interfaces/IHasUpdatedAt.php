@@ -19,7 +19,7 @@ interface IHasUpdatedAt
     public function getUpdatedAt(string $format = '');
 
     /**
-     * @param string|int|\DateTime $time
+     * @param int|\DateTime $time
      * @return $this
      */
     public function setUpdatedAt($time);
