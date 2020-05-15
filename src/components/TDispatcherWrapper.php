@@ -1,15 +1,13 @@
 <?php
 namespace extas\components;
 
-use extas\interfaces\IDispatcherWrapper;
-
 /**
- * Class DispatcherWrapper
+ * Class TDispatcherWrapper
  *
  * @package extas\components
  * @author jeyroik@gmail.com
  */
-class DispatcherWrapper implements IDispatcherWrapper
+trait TDispatcherWrapper
 {
     use THasName;
     use THasDescription;
