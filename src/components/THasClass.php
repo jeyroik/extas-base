@@ -44,4 +44,17 @@ trait THasClass
 
         return new $className($parameters);
     }
+
+    /**
+     * @param array $constructConfig
+     * @param string $method
+     * @param mixed ...$methodArgs
+     * @return mixed
+     */
+    public function runWithParameters(array $constructConfig, string $method, ...$methodArgs)
+    {
+        $dispatcher = $this->buildClassWithParameters($constructConfig);
+
+        return $dispatcher->$method(...$methodArgs);
+    }
 }

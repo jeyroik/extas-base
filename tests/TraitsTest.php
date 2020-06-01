@@ -2,9 +2,9 @@
 namespace tests;
 
 use extas\components\Item;
-use extas\components\THasContext;
+use extas\components\THasClass;
 use extas\components\THasPriority;
-use extas\interfaces\IHasContext;
+use extas\interfaces\IHasClass;
 use extas\interfaces\IHasPriority;
 use \PHPUnit\Framework\TestCase;
 use extas\components\THasInfo;
@@ -33,6 +33,7 @@ use extas\components\THasState;
 use extas\components\THasItemsData;
 use extas\interfaces\IHasItemsData;
 use extas\components\TIsApplicableArray;
+use extas\components\plugins\PluginEmpty;
 
 /**
  * Class TraitsTest
@@ -308,5 +309,20 @@ class TraitsTest extends TestCase
         $array = $test(['test1' => 'that.is', 'test2' => 'another.is']);
         $this->assertEquals('that.is.ok', $array['test1']);
         $this->assertEquals('another.is.ok', $array['test2']);
+    }
+
+    public function testHasClass()
+    {
+        $item = new class ([IHasClass::FIELD__CLASS => PluginEmpty::class]) extends Item {
+            use THasClass;
+
+            protected function getSubjectForExtension(): string
+            {
+                return 'test';
+            }
+        };
+
+        $item->runWithParameters([], '__invoke', 'test', 'test1');
+        $this->assertEquals(1, PluginEmpty::$worked);
     }
 }

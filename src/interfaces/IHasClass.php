@@ -29,4 +29,12 @@ interface IHasClass
      * @return mixed
      */
     public function buildClassWithParameters(array $parameters = []);
+
+    /**
+     * @param array $constructConfig
+     * @param string $method
+     * @param mixed ...$methodArgs
+     * @return mixed
+     */
+    public function runWithParameters(array $constructConfig, string $method, ...$methodArgs);
 }
