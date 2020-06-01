@@ -1,8 +1,6 @@
 <?php
 namespace tests;
 
-use Dotenv\Dotenv;
-use extas\components\Item;
 use extas\components\THasClass;
 use extas\components\THasPriority;
 use extas\interfaces\IHasClass;
@@ -43,13 +41,6 @@ use extas\components\plugins\PluginEmpty;
  */
 class TraitsTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $env = Dotenv::create(getcwd() . '/tests/');
-        $env->load();
-    }
-
     public function testHasDescription()
     {
         /**
@@ -321,13 +312,10 @@ class TraitsTest extends TestCase
 
     public function testHasClass()
     {
-        $item = new class ([IHasClass::FIELD__CLASS => PluginEmpty::class]) extends Item {
+        $item = new class () {
             use THasClass;
 
-            protected function getSubjectForExtension(): string
-            {
-                return 'test';
-            }
+            protected array $config = [IHasClass::FIELD__CLASS => PluginEmpty::class];
         };
 
         $item->runWithParameters([], '__invoke', 'test', 'test1');
