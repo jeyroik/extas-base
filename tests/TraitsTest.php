@@ -49,7 +49,7 @@ class TraitsTest extends TestCase
         $env = Dotenv::create(getcwd() . '/tests/');
         $env->load();
     }
-    
+
     public function testHasDescription()
     {
         /**
