@@ -1,6 +1,7 @@
 <?php
 namespace tests;
 
+use Dotenv\Dotenv;
 use extas\components\Item;
 use extas\components\THasClass;
 use extas\components\THasPriority;
@@ -42,6 +43,13 @@ use extas\components\plugins\PluginEmpty;
  */
 class TraitsTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $env = Dotenv::create(getcwd() . '/tests/');
+        $env->load();
+    }
+    
     public function testHasDescription()
     {
         /**
