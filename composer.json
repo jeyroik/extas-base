@@ -3,7 +3,8 @@
   "description": "Base Extas package",
   "require-dev": {
     "phpunit/phpunit": "^9",
-    "jeyroik/extas-snuffbox": "0.*"
+    "jeyroik/extas-snuffbox": "0.*",
+    "jeyroik/extas-foundation": "5.*"
   },
   "autoload": {
     "psr-4": {
