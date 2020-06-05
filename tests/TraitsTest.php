@@ -1,38 +1,41 @@
 <?php
 namespace tests;
 
-use extas\components\THasClass;
-use extas\components\THasPriority;
+
 use extas\interfaces\IHasClass;
 use extas\interfaces\IHasPriority;
-use \PHPUnit\Framework\TestCase;
-use extas\components\THasInfo;
-use extas\components\THasAliases;
 use extas\interfaces\IHasAliases;
-use extas\components\THasCreatedAt;
 use extas\interfaces\IHasCreatedAt;
-use extas\components\THasUpdatedAt;
 use extas\interfaces\IHasUpdatedAt;
-use extas\components\THasId;
 use extas\interfaces\IHasId;
-use extas\components\THasPath;
 use extas\interfaces\IHasPath;
-use extas\components\THasType;
 use extas\interfaces\IHasType;
-use extas\components\THasValue;
 use extas\interfaces\IHasValue;
-use extas\components\THasVersion;
 use extas\interfaces\IHasVersion;
-use extas\components\THasName;
 use extas\interfaces\IHasName;
-use extas\components\THasDescription;
 use extas\interfaces\IHasDescription;
 use extas\interfaces\IHasState;
+use extas\interfaces\IHasItemsData;
+
+use extas\components\THasClass;
+use extas\components\THasPriority;
+use extas\components\THasTags;
+use extas\components\THasInfo;
+use extas\components\THasAliases;
+use extas\components\THasCreatedAt;
+use extas\components\THasUpdatedAt;
+use extas\components\THasId;
+use extas\components\THasPath;
+use extas\components\THasType;
+use extas\components\THasValue;
+use extas\components\THasVersion;
+use extas\components\THasName;
+use extas\components\THasDescription;
 use extas\components\THasState;
 use extas\components\THasItemsData;
-use extas\interfaces\IHasItemsData;
 use extas\components\TIsApplicableArray;
-use extas\components\plugins\PluginEmpty;
+
+use \PHPUnit\Framework\TestCase;
 
 /**
  * Class TraitsTest
@@ -315,10 +318,25 @@ class TraitsTest extends TestCase
         $item = new class () {
             use THasClass;
 
-            protected array $config = [IHasClass::FIELD__CLASS => PluginEmpty::class];
+            protected array $config = [IHasClass::FIELD__CLASS => EmptyClass::class];
         };
 
-        $item->runWithParameters([], '__invoke', 'test', 'test1');
-        $this->assertEquals(1, PluginEmpty::$worked);
+        $result = $item->runWithParameters([], '__invoke', 'test', 'test1');
+        $this->assertEquals('is ok: test, test1', $result);
+    }
+
+    public function testHasTags()
+    {
+        $item = new class {
+            use THasTags;
+            protected array $config = [];
+        };
+        $this->assertFalse($item->hasTag('test'));
+
+        $item->addTags(['test']);
+        $this->assertTrue($item->hasTag('test'));
+
+        $item->removeTag('test');
+        $this->assertFalse($item->hasTag('test'));
     }
 }
