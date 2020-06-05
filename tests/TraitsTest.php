@@ -3,6 +3,7 @@ namespace tests;
 
 use extas\components\THasClass;
 use extas\components\THasPriority;
+use extas\components\THasTags;
 use extas\interfaces\IHasClass;
 use extas\interfaces\IHasPriority;
 use \PHPUnit\Framework\TestCase;
@@ -320,5 +321,20 @@ class TraitsTest extends TestCase
 
         $item->runWithParameters([], '__invoke', 'test', 'test1');
         $this->assertEquals(1, PluginEmpty::$worked);
+    }
+
+    public function testHasTags()
+    {
+        $item = new class {
+            use THasTags;
+            protected array $config = [];
+        };
+        $this->assertFalse($item->hasTag('test'));
+
+        $item->addTags(['test']);
+        $this->assertTrue($item->hasTag('test'));
+
+        $item->removeTag('test');
+        $this->assertFalse($item->hasTag('test'));
     }
 }
