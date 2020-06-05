@@ -13,7 +13,7 @@ use extas\interfaces\IHasUpdatedAt;
  */
 trait THasUpdatedAt
 {
-    use THasTime;
+    use THasCreatedAt;
 
     /**
      * @param string $format
