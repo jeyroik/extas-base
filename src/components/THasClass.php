@@ -1,6 +1,7 @@
 <?php
 namespace extas\components;
 
+use extas\components\exceptions\MissedOrUnknown;
 use extas\interfaces\IHasClass;
 
 /**
@@ -35,14 +36,21 @@ trait THasClass
 
     /**
      * @param array $parameters
-     *
-     * @return mixed
+     * @return bool|mixed
+     * @throws MissedOrUnknown
      */
     public function buildClassWithParameters(array $parameters = [])
     {
         $className = $this->getClass();
+        $class = class_exists($className)
+            ? new $className($parameters)
+            : $this->getByMagic($className, $parameters);
 
-        return new $className($parameters);
+        if (!$class) {
+            throw new MissedOrUnknown('class "' . $className . '"');
+        }
+
+        return $class;
     }
 
     /**
@@ -50,11 +58,24 @@ trait THasClass
      * @param string $method
      * @param mixed ...$methodArgs
      * @return mixed
+     * @throws MissedOrUnknown
      */
     public function runWithParameters(array $constructConfig, string $method, ...$methodArgs)
     {
         $dispatcher = $this->buildClassWithParameters($constructConfig);
 
         return $dispatcher->$method(...$methodArgs);
+    }
+
+    /**
+     * @param string $name
+     * @param array $parameters
+     * @return mixed
+     */
+    protected function getByMagic(string $name, array $parameters)
+    {
+        return method_exists($this, 'hasMethod') && $this->hasMethod($name)
+            ? $this->$name($parameters)
+            : null;
     }
 }
