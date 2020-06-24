@@ -323,6 +323,10 @@ class TraitsTest extends TestCase
 
         $result = $item->runWithParameters([], '__invoke', 'test', 'test1');
         $this->assertEquals('is ok: test, test1', $result);
+
+        $item->setClass('unknown');
+        $this->expectExceptionMessage('Missed or unknown class "unknown"');
+        $item->buildClassWithParameters();
     }
 
     public function testHasTags()
