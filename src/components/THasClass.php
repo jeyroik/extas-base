@@ -42,12 +42,9 @@ trait THasClass
     public function buildClassWithParameters(array $parameters = [])
     {
         $className = $this->getClass();
-
-        try {
-            $class = new $className($parameters);
-        } catch (\Exception $e) {
-            $class = $this->getByMagic($className, $parameters);
-        }
+        $class = class_exists($className)
+            ? new $className($parameters)
+            : $this->getByMagic($className, $parameters);
 
         if (!$class) {
             throw new MissedOrUnknown('class "' . $className . '"');
@@ -77,10 +74,8 @@ trait THasClass
      */
     protected function getByMagic(string $name, array $parameters)
     {
-        try {
-            return $this->$name($parameters);
-        } catch (\Exception $e) {
-            return null;
-        }
+        return method_exists($this, 'hasMethod') && $this->hasMethod($name)
+            ? $this->$name($parameters)
+            : null;
     }
 }
