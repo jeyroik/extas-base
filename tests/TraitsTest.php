@@ -2,7 +2,9 @@
 namespace tests;
 
 
+use extas\components\THasHash;
 use extas\interfaces\IHasClass;
+use extas\interfaces\IHasHash;
 use extas\interfaces\IHasPriority;
 use extas\interfaces\IHasAliases;
 use extas\interfaces\IHasCreatedAt;
@@ -85,6 +87,20 @@ class TraitsTest extends TestCase
 
         $test->setPriority(10);
         $this->assertEquals(10, $test->getPriority());
+    }
+
+    public function testHasHash()
+    {
+        /**
+         * @var $test IHasHash
+         */
+        $test = new class {
+            use THasHash;
+            protected array $config = [];
+        };
+
+        $test->setHash('test');
+        $this->assertEquals('test', $test->getHash());
     }
 
     public function testHasInfo()
