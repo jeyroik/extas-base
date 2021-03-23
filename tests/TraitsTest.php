@@ -2,8 +2,10 @@
 namespace tests;
 
 
+use extas\components\THasEndpoint;
 use extas\components\THasHash;
 use extas\interfaces\IHasClass;
+use extas\interfaces\IHasEndpoint;
 use extas\interfaces\IHasHash;
 use extas\interfaces\IHasPriority;
 use extas\interfaces\IHasAliases;
@@ -73,6 +75,20 @@ class TraitsTest extends TestCase
 
         $test->setName('Test');
         $this->assertEquals('Test', $test->getName());
+    }
+
+    public function testHasEndpoint()
+    {
+        /**
+         * @var $test IHasEndpoint
+         */
+        $test = new class {
+            use THasEndpoint;
+            protected array $config = [];
+        };
+
+        $test->setEndpoint('Test');
+        $this->assertEquals('Test', $test->getEndpoint());
     }
 
     public function testHasPriority()
