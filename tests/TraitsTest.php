@@ -11,6 +11,7 @@ use extas\interfaces\IHasPriority;
 use extas\interfaces\IHasAliases;
 use extas\interfaces\IHasCreatedAt;
 use extas\interfaces\IHasUpdatedAt;
+use extas\interfaces\IHasDeletedAt;
 use extas\interfaces\IHasId;
 use extas\interfaces\IHasPath;
 use extas\interfaces\IHasType;
@@ -28,6 +29,7 @@ use extas\components\THasInfo;
 use extas\components\THasAliases;
 use extas\components\THasCreatedAt;
 use extas\components\THasUpdatedAt;
+use extas\components\THasDeletedAt;
 use extas\components\THasId;
 use extas\components\THasPath;
 use extas\components\THasType;
@@ -258,6 +260,28 @@ class TraitsTest extends TestCase
 
         $test->setCreatedAt(new \DateTime(date('Y/m/d H:i:s', $now)));
         $this->assertEquals(date($format, $now), $test->getCreatedAt($format));
+    }
+
+    public function testHasDeletedAt()
+    {
+        /**
+         * @var $test IHasDeletedAt
+         */
+        $test = new class {
+            use THasDeletedAt;
+            protected array $config = [];
+        };
+
+        $now = time();
+        $format = 'Y-m-d H:i:s';
+
+        $test->setDeletedAt($now);
+
+        $this->assertEquals($now, $test->getDeletedAt());
+        $this->assertEquals(date($format, $now), $test->getDeletedAt($format));
+
+        $test->setDeletedAt(new \DateTime(date('Y/m/d H:i:s', $now)));
+        $this->assertEquals(date($format, $now), $test->getDeletedAt($format));
     }
 
     public function testHasAliases()
